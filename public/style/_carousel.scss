@@ -1,0 +1,74 @@
+.portfolio-carousel {
+    .carousel-caption {
+        position: absolute;
+        top: 35%;
+        bottom: auto;
+        left: 10%;
+        right: auto;
+        text-align: left;
+        @include media-breakpoint-down(md) {
+            position: absolute;
+            top: 20%;
+            bottom: auto;
+            left: 10%;
+            right: auto;
+            text-align: left;
+        }
+        @keyframes typing {
+            0% {
+                width: 0%;
+            }
+            2% {
+                width: 0%;
+            }
+            5% {
+                width: 0%;
+            }
+            17% {
+                width: 100%;
+            }
+            19% {
+                width: 100%;
+            }
+            24% {
+                width: 0%;
+            }
+            80% {
+                width: 0%;
+            }
+            100% {
+                width: 0%;
+            }
+        }
+        .frontend,
+        .backend,
+        .designer {
+            overflow: hidden;
+            color: #7462E1;
+            width: 0;
+            float: left;
+            white-space: nowrap;
+            position: absolute;
+            animation-name: typing;
+            animation-iteration-count: infinite;
+        }
+        .backend {
+            animation-duration: 12s;
+            animation-timing-function: steps(18);
+        }
+        .frontend {
+            animation-delay: 3s;
+            animation-duration: 12s;
+            animation-timing-function: steps(17);
+        }
+        .designer {
+            animation-delay: 6s;
+            animation-duration: 12s;
+            animation-timing-function: steps(16);
+        }
+        q {
+            float: left;
+            color: #6b6b6b;
+        }
+    }
+}

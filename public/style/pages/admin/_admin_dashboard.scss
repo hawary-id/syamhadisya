@@ -1,0 +1,90 @@
+.page-dashboard {
+    .profile-picture {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+    #page-content-wrapper {
+        background: #f5f5fb;
+        width: 100%;
+        padding-top: 100px;
+    }
+    #sidebar-wrapper {
+        margin-top: 60px;
+        min-height: 100vh;
+        margin-left: -15rem;
+        transition: margin 0.25s ease-out;
+        .sidebar-heading {
+            padding: 0.875rem 1.25rem;
+            font-size: 1.2rem;
+        }
+        .list-group {
+            width: 15rem;
+        }
+    }
+    #wrapper {
+        &.toggled {
+            #sidebar-wrapper {
+                margin-left: 0;
+            }
+        }
+    }
+    .navbar-portfolio {
+        margin-top: 0;
+        background-color: #ffffff;
+        box-shadow: 0px 4px 5px #cacad1;
+        @include media-breakpoint-up(md) {
+            background-color: transparent;
+            box-shadow: none;
+        }
+    }
+    .list-group-item {
+        border: 0;
+        font-size: 16px;
+        color: #9e9797;
+        &.active {
+            background: linear-gradient( 270deg, rgba(170, 43, 243, 0.32) 2%, rgba(255, 255, 255, 0) 100%);
+            border-right: 4px solid #7462E1;
+            color: #0c0d36;
+        }
+    }
+    @include media-breakpoint-up(md) {
+        #sidebar-wrapper {
+            margin-left: 0;
+            margin-top: 0px;
+        }
+        #page-content-wrapper {
+            min-width: 0;
+            width: 100%;
+            padding-top: 20px;
+        }
+        #wrapper {
+            &.toggled {
+                #sidebar-wrapper {
+                    margin-left: -15rem;
+                }
+            }
+        }
+    }
+    .section-content {
+        .card {
+            background: #fefefe;
+            box-shadow: 0px 4px 15px #f8f1f5;
+            border-radius: 8px;
+            border: none;
+            text-decoration: none !important;
+            .dashboard-card-title {
+                font-size: 16px;
+                line-height: 24px;
+                color: #9e9797;
+            }
+            .dashboard-card-subtitle {
+                font-weight: 600;
+                font-size: 32px;
+                line-height: 48px;
+                color: #0c0d36;
+            }
+        }
+    }
+}

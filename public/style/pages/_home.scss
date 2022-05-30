@@ -1,0 +1,77 @@
+.page-home {
+    hr {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+    h3 {
+        border-bottom: 2px solid #7462E1;
+        display: inline-block;
+        width: auto;
+    }
+    .portfolio-about {
+        .text-title {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            color: #4B4B4B;
+        }
+        .text-subtitle {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+        }
+    }
+    @keyframes bounce {
+        0%,
+        100%,
+        20%,
+        50%,
+        80% {
+            -webkit-transform: translateY(0);
+            -ms-transform: translateY(0);
+            transform: translateY(0)
+        }
+        40% {
+            -webkit-transform: translateY(-30px);
+            -ms-transform: translateY(-30px);
+            transform: translateY(-30px)
+        }
+        60% {
+            -webkit-transform: translateY(-15px);
+            -ms-transform: translateY(-15px);
+            transform: translateY(-15px)
+        }
+    }
+    .portfolio-advantage {
+        .oval {
+            cursor: pointer;
+            height: 150px;
+            width: 120px;
+            background-color: #E5E5E5;
+            border: 1px solid #E5E5E5;
+            border-radius: 200px;
+            text-decoration: none;
+            .img-icon {
+                height: 80px;
+                width: 80px;
+                margin-top: 35px;
+                margin-bottom: auto;
+                -webkit-animation-duration: 1s;
+                animation-duration: 1s;
+                -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+                -webkit-animation-timing-function: ease-in-out;
+                animation-timing-function: ease-in-out;
+                animation-iteration-count: infinite;
+                -webkit-animation-iteration-count: infinite;
+                filter: grayscale(100%);
+            }
+        }
+        .oval:hover>.img-icon {
+            filter: grayscale(0%);
+            cursor: pointer;
+            animation-name: bounce;
+            -moz-animation-name: bounce;
+        }
+    }
+}
