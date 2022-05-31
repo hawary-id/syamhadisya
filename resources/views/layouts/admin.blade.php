@@ -27,9 +27,9 @@
                 <div class="list-group list-flush">
                     <a href="" class="list-group-item list-group-item-action {{ (request()->is('admin')) ? 'active' : '' }}">Dashboard</a>
                     <a href="{{ route('category.index') }}" class="list-group-item list-group-item-action {{ (request()->is('admin/category*')) ? 'active' : '' }}">Category</a>
-                    <a href="{{ route('project.index') }}" class="list-group-item list-group-item-action {{ (request()->is('admin/project*')) ? 'active' : '' }}">Projects</a>
+                    <a href="{{ route('project.index') }}" class="list-group-item list-group-item-action {{ (request()->is('admin/project*')) ? 'active' : '' }}">Project</a>
+                    <a href="{{ route('blog.index') }}" class="list-group-item list-group-item-action {{ (request()->is('admin/blog*')) ? 'active' : '' }}">Blog</a>
                     <a href="{{route('skill.index')}}" class="list-group-item list-group-item-action {{ (request()->is('admin/skill*')) ? 'active' : '' }}">Skills</a>
-                    <a href="#" class="list-group-item list-group-item-action">Sequrity</a>
                 </div>
             </div>
 
@@ -51,9 +51,10 @@
                                         <img src="/assets/images/profile.png" alt="" class="img-fluid profile-picture" /> Hi, Syamsul Hadi
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="#" class="dropdown-item">Home</a>
+                                        <a href="{{ route('home') }}" class="dropdown-item">Home</a>
+                                        <a href="" class="dropdown-item">Change Password</a>
                                         <div class="dropdown-devider"></div>
-                                        <a href="" class="dropdown-item">Sign Out</a>
+                                        <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Sign Out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -61,12 +62,16 @@
                             <!-- Mobile menu-->
                             <ul class="navbar-nav d-block d-md-none">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link d-inline-block">Home</a>
+                                    <a href="{{ route('home') }}" class="nav-link d-inline-block">Home</a>
+                                    <a href="" class="nav-link d-inline-block">Change Password</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link d-inline-block">Sign Out</a>
+                                    <a href="{{ route('logout') }}" class="nav-link d-inline-block" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Sign Out</a>
                                 </li>
                             </ul>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </div>
                     </div>
                 </nav>
