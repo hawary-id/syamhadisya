@@ -26,6 +26,10 @@ footer {
     color: #7462E1 !important;
 }
 
+.bg-primary {
+    background-color: #7462E1 !important;
+}
+
 .btn-primary {
     @include button-variant(#7462E1, transparent);
 }

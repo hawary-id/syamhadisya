@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\HomeController;
 
 /*
@@ -26,6 +27,7 @@ Route::prefix('admin')
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('category', CategoryController::class);
         Route::resource('project', ProjectController::class);
+        Route::resource('skill', SkillController::class);
     });
 
 Auth::routes();

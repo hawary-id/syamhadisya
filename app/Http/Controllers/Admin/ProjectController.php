@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Category;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class ProjectController extends Controller
 {
@@ -71,7 +72,12 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Project::with('category')->FindOrFail($id);
+        $categories = Category::where('id','<>',$item->categories_id)->orderBy('name')->get();
+        return view('pages.admin.project.edit' ,[
+            'item' => $item,
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -83,7 +89,25 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->name);
+        $item = Project::findOrFail($id);
+        if($request->photo){
+            $path = public_path().'/storage/'.$item->photo;
+            File::delete($path);
+            $data['photo'] = $request->file('photo')->store('assets/project/cover','public');
+        }else{
+            unset($data['photo']);
+        }
+        if($request->page){
+            $path = public_path().'/storage/'.$item->page;
+            File::delete($path);
+            $data['page'] = $request->file('page')->store('assets/project/page','public');
+        }else{
+            unset($data['page']);
+        }
+        $item->update($data);
+        return redirect()->route('project.index');
     }
 
     /**
@@ -94,6 +118,11 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Project::findOrFail($id);
+        File::delete(public_path().'/storage/'.$item->photo);
+        File::delete(public_path().'/storage/'.$item->page);
+        $item->delete();
+
+        return redirect()->route('project.index');
     }
 }

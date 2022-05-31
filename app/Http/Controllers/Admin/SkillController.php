@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Category;
+use App\Models\Skill;
+use Illuminate\Support\Facades\File;
 
-class CategoryController extends Controller
+class SkillController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $items = Category::orderBy('name')->get();
-        return view('pages.admin.category.index',[
+        $items = Skill::orderBy('name')->get();
+        return view('pages.admin.skill.index',[
             'items' => $items
         ]);
     }
@@ -28,7 +29,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.category.create');
+        return view('pages.admin.skill.create');
     }
 
     /**
@@ -40,8 +41,9 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        Category::create($data);
-        return redirect()->route('category.index');
+        $data['image'] = $request->file('image')->store('assets/skill','public');
+        Skill::create($data);
+        return redirect()->route('skill.index');
     }
 
     /**
@@ -63,8 +65,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $item = Category::FIndorFail($id);
-        return view('pages.admin.category.edit' ,[
+        $item = Skill::FindOrFail($id);
+        return view('pages.admin.skill.edit' ,[
             'item' => $item
         ]);
     }
@@ -79,10 +81,16 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        $item = Category::findOrFail($id);
+        $item = Skill::findOrFail($id);
+        if($request->photo){
+            $path = public_path().'/storage/'.$item->image;
+            File::delete($path);
+            $data['image'] = $request->file('image')->store('assets/skill','public');
+        }else{
+            unset($data['image']);
+        }
         $item->update($data);
-
-        return redirect()->route('category.index');
+        return redirect()->route('skill.index');
     }
 
     /**
@@ -93,9 +101,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $item = Category::findOrFail($id);
+        $item = Skill::findOrFail($id);
+        File::delete(public_path().'/storage/'.$item->image);
         $item->delete();
 
-        return redirect()->route('category.index');
+        return redirect()->route('skill.index');
     }
 }

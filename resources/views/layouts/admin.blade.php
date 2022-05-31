@@ -28,7 +28,7 @@
                     <a href="" class="list-group-item list-group-item-action {{ (request()->is('admin')) ? 'active' : '' }}">Dashboard</a>
                     <a href="{{ route('category.index') }}" class="list-group-item list-group-item-action {{ (request()->is('admin/category*')) ? 'active' : '' }}">Category</a>
                     <a href="{{ route('project.index') }}" class="list-group-item list-group-item-action {{ (request()->is('admin/project*')) ? 'active' : '' }}">Projects</a>
-                    <a href="#" class="list-group-item list-group-item-action">Skills</a>
+                    <a href="{{route('skill.index')}}" class="list-group-item list-group-item-action {{ (request()->is('admin/skill*')) ? 'active' : '' }}">Skills</a>
                     <a href="#" class="list-group-item list-group-item-action">Sequrity</a>
                 </div>
             </div>

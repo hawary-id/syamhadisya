@@ -1,32 +1,24 @@
 @extends('layouts.admin')
 @section('title')
-  Admin Project
+  Admin Skills
 @endsection
 
 @push('addon-style')
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css"/>
-<style>
-    .bg-primary{
-        background-color: #7462E1 !important;
-    }
-    a{
-        text-decoration:none;
-    }
-</style>
 @endpush
 
 @section('content')
 <div class="section-content section-dashboard-home" data-aos="fade-up">
     <div class="container-fluid">
         <div class="dashboard-heading">
-            <h2 class="dashboard-title">My Project</h2>
-            <p class="dashboard-subtitle">Manage your project!</p>
+            <h2 class="dashboard-title">My Skills</h2>
+            <p class="dashboard-subtitle">Manage your skills!</p>
         </div>
 
         <div class="dashboard-content">
             <div class="row">
                 <div class="col-12 mb-3">
-                    <a href="{{ route('project.create') }}" class="btn btn-primary rounded">+ Add New Project</a>
+                    <a href="{{ route('skill.create') }}" class="btn btn-primary rounded">+ Add New Skill</a>
                 </div>
                 <div class="col-12">
                     <div class="card">
@@ -36,13 +28,8 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Cover</th>
-                                            <th>Page</th>
+                                            <th>Image</th>
                                             <th>Name</th>
-                                            <th>Category</th>
-                                            <th>Tools</th>
-                                            <th>Description</th>
-                                            <th>URL Site</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -55,7 +42,7 @@
                                                 <td>{{ $no }}</td>
                                                 <td>
                                                     <a href="" data-bs-toggle="modal" data-bs-target="#coverModal{{ $item->id }}">
-                                                        <img src="{{ Storage::url($item->photo) }}" width="50">
+                                                        <img src="{{ Storage::url($item->image) }}" width="50">
                                                     </a>
                                                     <!-- Modal -->
                                                     <div class="modal fade projectModal" id="coverModal{{ $item->id }}" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -66,29 +53,7 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <img src="{{ Storage::url($item->photo) }}" alt="" class="img-fluid w-100">
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <a href="" data-bs-toggle="modal" data-bs-target="#pageModal{{ $item->id }}">
-                                                        <img src="{{ Storage::url($item->page) }}" width="50">
-                                                    </a>
-                                                    <!-- Modal -->
-                                                    <div class="modal fade projectModal" id="pageModal{{ $item->id }}" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                                                            <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Page : {{ $item->name }}</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <img src="{{ Storage::url($item->page) }}" alt="" class="img-fluid w-100">
+                                                                <img src="{{ Storage::url($item->image) }}" alt="" class="img-fluid w-100">
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -98,23 +63,15 @@
                                                     </div>
                                                 </td>
                                                 <td>{{ $item->name }}</td>
-                                                <td>{{ $item->category->name }}</td>
-                                                <td>
-                                                    @foreach(explode(', ', $item->tools) as $tools)
-                                                        <span class="badge rounded-pill bg-primary">{{ $tools }}</span>
-                                                    @endforeach
-                                                </td>
-                                                <td>{{ $item->description }}</td>
-                                                <td><a href="http://{{ $item->url }}" target="_BLANK">{{ $item->url }}</a></td>
                                                 <td>
                                                     <div class="btn-group">
                                                         <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                                           Action
                                                         </button>
                                                         <ul class="dropdown-menu">
-                                                            <li><a class="dropdown-item" href="{{ route('project.edit',$item->id) }}">Edit</a></li>
+                                                            <li><a class="dropdown-item" href="{{ route('skill.edit',$item->id) }}">Edit</a></li>
                                                             <li>
-                                                                <form action="{{ route('project.destroy',$item->id) }}" method="POST">
+                                                                <form action="{{ route('skill.destroy',$item->id) }}" method="POST">
                                                                     @method('DELETE')
                                                                     @csrf
                                                                     <button type="submit" class="dropdown-item text-danger">
