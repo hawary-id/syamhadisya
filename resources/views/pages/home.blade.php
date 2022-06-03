@@ -156,36 +156,13 @@
                     </div>
                 </div>
                 <div class="row justify-content-center ">
-                    <div class="col-4 col-md-2 text-center mb-3 mb-md-0" data-aos="fade-up" data-aos-delay="100">
-                        <a class="oval d-block" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Laravel">
-                            <img src="/assets/icon/icon-laravel.svg" alt="Laravel" class="img-fluid img-icon">
-                        </a>
-                    </div>
-                    <div class="col-4 col-md-2 text-center mb-3 mb-md-0" data-aos="fade-up" data-aos-delay="200">
-                        <a class="oval d-block" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Andorid">
-                            <img src="/assets/icon/icon-android.svg" alt="Android" class="img-fluid img-icon">
-                        </a>
-                    </div>
-                    <div class="col-4 col-md-2 text-center mb-3 mb-md-0" data-aos="fade-up" data-aos-delay="300">
-                        <a class="oval d-block" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Git">
-                            <img src="/assets/icon/icon-git.svg" alt="Git" class="img-fluid img-icon">
-                        </a>
-                    </div>
-                    <div class="col-4 col-md-2 text-center mb-3 mb-md-0" data-aos="fade-up" data-aos-delay="400">
-                        <a class="oval d-block" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Bootstrap 5">
-                            <img src="/assets/icon/icon-bootstrap5.svg" alt="Bootstrap " class="img-fluid img-icon">
-                        </a>
-                    </div>
-                    <div class="col-4 col-md-2 text-center mb-3 mb-md-0" data-aos="fade-up" data-aos-delay="500">
-                        <a class="oval d-block" data-bs-placement="bottom" title="Figma">
-                            <img src="/assets/icon/icon-figma.svg" alt="Figma" class="img-fluid img-icon ">
-                        </a>
-                    </div>
-                    <div class="col-4 col-md-2 text-center mb-3 mb-md-0" data-aos="fade-up" data-aos-delay="600">
-                        <a class="oval d-block" data-bs-placement="bottom" title="Adobe XD">
-                            <img src="/assets/icon/icon-xd.svg" alt="Adobe XD" class="img-fluid img-icon">
-                        </a>
-                    </div>
+                    @foreach ($skills as $skill)
+                        <div class="col-4 col-md-2 text-center mb-3 mb-md-0" data-aos="fade-up" data-aos-delay="100">
+                            <a class="oval d-block" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ $skill->name }}">
+                                <img src="{{Storage::url($skill->image)}}" alt="{{ $skill->name }}" class="img-fluid img-icon">
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -200,6 +177,7 @@
                     </div>
                 </div>
                 <div class="row ">
+
                     <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
                         <a href="#" class="component-projects d-block" data-bs-toggle="modal" data-bs-target="#tisabaniModal">
                             <div class="projects-thumbnail">
