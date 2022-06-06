@@ -17,4 +17,13 @@ class HomeController extends Controller
             'projects' => $projects
         ]);
     }
+
+    public function projects()
+    {
+        $projects = Project::with('category')->orderBy('id','DESC')->get();
+        return view('pages.projects',[
+            'projects' => $projects
+        ]);
+
+    }
 }

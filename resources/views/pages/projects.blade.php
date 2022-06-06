@@ -42,20 +42,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="navbar-item active">
+                    <li class="navbar-item">
                         <a href="{{ route('home') }}" class="nav-link">Home</a>
                     </li>
-                    <li class="navbar-item">
-                        <a href="#about" class="nav-link">About</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="#skills" class="nav-link">Skills</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="#portfolio" class="nav-link">Portfolio</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="#contact" class="nav-link">Contact</a>
+                    <li class="navbar-item active">
+                        <a href="#" class="nav-link">Projects</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav d-none d-lg-flex navbar-social ms-auto">
@@ -80,115 +71,11 @@
     </nav>
 
     <div class="page-content page-home" id="home">
-        <section class="portfolio-carousel" data-aos="zoom-in">
-            <div id="portfolioCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="assets/images/carousel.svg" class="d-block w-100" alt="">
-                        <div class="carousel-caption">
-                            <h1 class="text-primary"><span style="color:#495971;float:left;" class="me-1">I'm </span>
-                                <span class="frontend">Frontend Developer</span>
-                                <span class="backend">Backend Developer</span>
-                                <span class="designer">UI / UX Designer</span>
-                            </h1>
-                            <q>Life would be much easier if I had the source code.</q>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="portfolio-about" id="about">
-            <div class="container">
-                <div class="col-12 text-center my-5" data-aos="fade-up">
-                    <h3 class="text-primary">About</h3>
-                </div>
-
-                <div class=" d-none d-md-block">
-                    <div class="row" data-aos="fade-up" data-aos-delay="100">
-                        <div class="col-md-4">
-                            <small class="text-secondary">Biography</small>
-                            <p>Work for money and design for love! I'm Hadi, Backend and Frontend Developer based in Indonesia.</p>
-
-                            <small class="text-secondary">Contact</small>
-                            <p>Tangerang, Indonesia<br>syamhadisya@gmail.com<br>+62 857-7553-9967</p>
-
-                            <small class="text-secondary">Services</small>
-                            <p>Web Developer<br>Mobile Developer<br>UI/UX Designer</p>
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <img src="/assets/images/profile.png" alt="">
-                        </div>
-                        <div class="col-md-4">
-                            <div class="float-end text-center">
-                                <small class="text-secondary">Project Done</small>
-                                <h1 class=" text-primary">5</h1>
-                                <small class="text-secondary">Experience</small>
-                                <h1 class=" text-primary">3 years</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row d-block d-md-none text-center" data-aos="fade-up" data-aos-delay="100">
-                    <div class="col-md-4 mb-3">
-                        <img src="/assets/images/profile.png" class="img-fluid" alt="">
-                    </div>
-                    <div class="col-md-4">
-                        <small class="text-secondary">Biography</small>
-                        <p>Work for money and design for love! I am Hadi, Backend and Frontend Developer based in Indonesia.</p>
-                        <small class="text-secondary">Contact<  /small>
-                        <p>Tangerang, Indonesia<br>syamhadisya@gmail.com<br>+62 857-7553-9967</p>
-
-                        <small class="text-secondary">Services</small>
-                        <p>Web Developer<br>Mobile Developer<br>UI/UX Designer</p>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-6">
-                                <small class="text-secondary">Project Done</small>
-                                <h1 class=" text-primary">5</h1>
-                            </div>
-
-                            <div class="col-6">
-                                <small class="text-secondary">Experience</small>
-                                <h1 class=" text-primary">3 Years</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div fade-aos="fade-up" id="skills">
-            <hr>
-        </div>
-        <section class="portfolio-advantage">
-            <div class="container">
-
-                <div class="row mb-5">
-                    <div class="col-12 text-center" data-aos="fade-up">
-                        <h3 class="text-primary">My Advantage</h3>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    @foreach ($skills as $skill)
-                        <div class="col-4 col-md-2 text-center mb-3 mb-md-0" data-aos="fade-up" data-aos-delay="100">
-                            <a class="oval d-block" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ $skill->name }}">
-                                <img src="{{Storage::url($skill->image)}}" alt="{{ $skill->name }}" class="img-fluid img-icon">
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-        <div fade-aos="fade-up" id="portfolio">
-            <hr>
-        </div>
         <section class="portfolio-project">
             <div class="container">
                 <div class="row mb-5">
                     <div class="col-12 text-center" data-aos="fade-up">
-                        <h3 class="text-primary">My Latest Projects</h3>
+                        <h3 class="text-primary">My Projects</h3>
                     </div>
                 </div>
                 <div class="row">
@@ -259,88 +146,8 @@
                     @empty
                         <div class="text-center">Projects Not Found</div>
                     @endforelse
-                    <div class="col-12 text-center" data-aos="fade-up">
-                        <a href="{{ route('projects') }}" class="btn btn-primary px-5 py-2">All Projects</a>
-                    </div>
                 </div>
 
-            </div>
-        </section>
-        <div fade-aos="fade-up" id="contact">
-            <hr>
-        </div>
-        <section class="portfolio-contact">
-            <div class="container">
-                <div class="row mb-5">
-                    <div class="col-12 text-center" data-aos="fade-up">
-                        <h3 class="text-primary">Contact</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 col-md-4 mb-3" data-aos="fade-up">
-                        @if(Session::has('success'))
-                            <div class="alert alert-success">
-                            {{ Session::get('success') }}
-                            </div>
-                        @endif
-                        <form action="{{ route('contact.store') }}" method="post">
-                            {{csrf_field()}}
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Your Name">
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email Address">
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label for="phone_number" class="form-label">Phone Number</label>
-                                <input type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" placeholder="Phone Number">
-                                @error('phone_number')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label for="subject" class="form-label">Subject</label>
-                                <input type="text" class="form-control @error('subject') is-invalid @enderror" name="subject" placeholder="Subject">
-                                @error('subject')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label for="Name" class="form-label">Message</label>
-                                <textarea name="message" id="message" class="form-control @error('message') is-invalid @enderror" placeholder="Message"></textarea>
-                                @error('message')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="d-grid">
-                                <input type="submit" class="btn btn-primary" value="Send">
-                            </div>
-                        </form>
-
-                    </div>
-                    <div class="col-12 col-md-8 text-center" data-aos="zoom-in">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253863.7098836702!2d106.39249836648997!3d-6.181524856066386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ffb6b0ad7ae3%3A0x301576d14feb9b0!2sKabupaten%20Tangerang%2C%20Banten!5e0!3m2!1sid!2sid!4v1649902936378!5m2!1sid!2sid"
-                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>
             </div>
         </section>
 
