@@ -12,9 +12,11 @@ class HomeController extends Controller
     {
         $skills = Skill::orderBy('name')->get();
         $projects = Project::with('category')->orderBy('id','DESC')->take(8)->get();
+        $count = Project::count();
         return view('pages.home',[
             'skills' => $skills,
-            'projects' => $projects
+            'projects' => $projects,
+            'count' => $count
         ]);
     }
 

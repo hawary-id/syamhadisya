@@ -29,7 +29,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Title</th>
-                                            <th>Slug</th>
+                                            <th>Keyword</th>
                                             <th>Description</th>
                                             <th>Images</th>
                                             <th>Action</th>
@@ -43,7 +43,11 @@
                                             <tr>
                                                 <td>{{ $no }}</td>
                                                 <td>{{ $item->title }}</td>
-                                                <td>{{ $item->slug }}</td>
+                                                <td>
+                                                    @foreach(explode(', ', $item->keyword) as $keyword)
+                                                        <span class="badge rounded-pill bg-primary">{{ $keyword }}</span>
+                                                    @endforeach
+                                                </td>
                                                 <td>{!! $item->description !!}</td>
                                                 <td>
                                                     <a href="" data-bs-toggle="modal" data-bs-target="#imagesModal{{ $item->id }}">
@@ -73,9 +77,9 @@
                                                           Action
                                                         </button>
                                                         <ul class="dropdown-menu">
-                                                            <li><a class="dropdown-item" href="{{ route('skill.edit',$item->id) }}">Edit</a></li>
+                                                            <li><a class="dropdown-item" href="{{ route('blog.edit',$item->id) }}">Edit</a></li>
                                                             <li>
-                                                                <form action="{{ route('skill.destroy',$item->id) }}" method="POST">
+                                                                <form action="{{ route('blog.destroy',$item->id) }}" method="POST">
                                                                     @method('DELETE')
                                                                     @csrf
                                                                     <button type="submit" class="dropdown-item text-danger">

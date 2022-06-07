@@ -54,7 +54,7 @@
                                                           Action
                                                         </button>
                                                         <ul class="dropdown-menu">
-                                                            <li><a class="dropdown-item" href="{{ route('contact.reply',$item->id) }}">Reply</a></li>
+                                                            <li><a class="dropdown-item" href="{{ route('contact.index',$item->id) }}">Reply</a></li>
                                                             <li>
                                                                 <form action="{{ route('category.destroy',$item->id) }}" method="POST">
                                                                     @method('DELETE')

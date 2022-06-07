@@ -121,7 +121,7 @@
                         <div class="col-md-4">
                             <div class="float-end text-center">
                                 <small class="text-secondary">Project Done</small>
-                                <h1 class=" text-primary">5</h1>
+                                <h1 class=" text-primary">{{ $count }}</h1>
                                 <small class="text-secondary">Experience</small>
                                 <h1 class=" text-primary">3 years</h1>
                             </div>

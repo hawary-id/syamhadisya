@@ -26,7 +26,7 @@
                     <img src="/assets/images/Logo.svg" alt="" class="my-4" />
                 </div>
                 <div class="list-group list-flush">
-                    <a href="" class="list-group-item list-group-item-action {{ (request()->is('admin')) ? 'active' : '' }}">Dashboard</a>
+                    <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action {{ (request()->is('admin')) ? 'active' : '' }}">Dashboard</a>
                     <a href="{{ route('contact.index') }}" class="list-group-item list-group-item-action {{ (request()->is('admin/contact*')) ? 'active' : '' }}">Email</a>
                     <a href="{{ route('category.index') }}" class="list-group-item list-group-item-action {{ (request()->is('admin/category*')) ? 'active' : '' }}">Category</a>
                     <a href="{{ route('project.index') }}" class="list-group-item list-group-item-action {{ (request()->is('admin/project*')) ? 'active' : '' }}">Project</a>

@@ -7,6 +7,7 @@ use Illuminate\support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class BlogController extends Controller
 {
@@ -68,7 +69,10 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Blog::FindorFail($id);
+        return view('pages.admin.blog.edit' ,[
+            'item' => $item
+        ]);
     }
 
     /**
@@ -80,7 +84,18 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $item = Blog::findOrFail($id);
+        if($request->photo){
+            $path = public_path().'/storage/'.$item->image;
+            File::delete($path);
+            $data['image'] = $request->file('image')->store('assets/blog','public');
+        }else{
+            unset($data['image']);
+        }
+        $data['slug'] = Str::slug($request->title);
+        $item->update($data);
+        return redirect()->route('blog.index');
     }
 
     /**
@@ -91,6 +106,10 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Blog::findOrFail($id);
+        File::delete(public_path().'/storage/'.$item->image);
+        $item->delete();
+
+        return redirect()->route('blog.index');
     }
 }
