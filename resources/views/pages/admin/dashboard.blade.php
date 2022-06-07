@@ -56,38 +56,43 @@
                                 <div class="row">
                                     <div class="col-4 border-end">
                                         <div class="list-group" id="list-tab" role="tablist">
-                                            <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list" href="#list-{{ $new->id }}" role="tab" aria-controls="list-home">{{ $new->name }} <small class="float-end">{{ $new->created_at }}</small></a>
-                                            @foreach ($emails as $email)
-                                                <a class="list-group-item list-group-item-action" id="list-home-list" data-bs-toggle="list" href="#list-{{ $email->id }}" role="tab" aria-controls="list-home">{{ $email->name }} <small class="float-end">{{ $email->created_at }}</small></a>
-                                            @endforeach
+                                            @if($count>0)
+                                                <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list" href="#list-{{ $new->id }}" role="tab" aria-controls="list-home">{{ $new->name }} <small class="float-end">{{ $new->created_at }}</small></a>
+
+                                                @foreach ($emails as $email)
+                                                    <a class="list-group-item list-group-item-action" id="list-home-list" data-bs-toggle="list" href="#list-{{ $email->id }}" role="tab" aria-controls="list-home">{{ $email->name }} <small class="float-end">{{ $email->created_at }}</small></a>
+                                                @endforeach
+                                            @endif
                                         </div>
                                       </div>
                                       <div class="col-8">
                                         <div class="tab-content" id="nav-tabContent">
-                                            <div class="tab-pane fade show active" id="list-{{ $new->id }}" role="tabpanel" aria-labelledby="list-home-list">
-                                                <h5>From : {{ $new->name }} ( {{ $new->email }} )</h5>
-                                                <h6>Phone Number : {{ $new->phone_number }}</h6>
-                                                <small>Date : {{ $new->created_at }}</small>
-                                                <hr>
-                                                <p class="mt-3 mb-5">{{ $new->message }}</p>
-                                                <hr>
-                                                <div class="col-12 text-center">
-                                                    <a href="{{ route('contact-store',$new->id) }}"style="text-decoration:none;"><i class="bi bi-reply-fill me-1"></i>Reply</a>
-                                                </div>
-                                            </div>
-                                            @foreach ($emails as $email)
-                                                <div class="tab-pane fade show" id="list-{{ $email->id }}" role="tabpanel" aria-labelledby="list-home-list">
-                                                    <h5>From : {{ $email->name }} ( {{ $email->email }} )</h5>
-                                                    <h6>Phone Number : {{ $email->phone_number }}</h6>
-                                                    <small>Date : {{ $email->created_at }}</small>
+                                            @if($count>0)
+                                                <div class="tab-pane fade show active" id="list-{{ $new->id }}" role="tabpanel" aria-labelledby="list-home-list">
+                                                    <h5>From : {{ $new->name }} ( {{ $new->email }} )</h5>
+                                                    <h6>Phone Number : {{ $new->phone_number }}</h6>
+                                                    <small>Date : {{ $new->created_at }}</small>
                                                     <hr>
-                                                    <p class="mt-3 mb-5">{{ $email->message }}</p>
+                                                    <p class="mt-3 mb-5">{{ $new->message }}</p>
                                                     <hr>
                                                     <div class="col-12 text-center">
                                                         <a href="{{ route('contact-store',$new->id) }}"style="text-decoration:none;"><i class="bi bi-reply-fill me-1"></i>Reply</a>
                                                     </div>
                                                 </div>
-                                            @endforeach
+                                                @foreach ($emails as $email)
+                                                    <div class="tab-pane fade show" id="list-{{ $email->id }}" role="tabpanel" aria-labelledby="list-home-list">
+                                                        <h5>From : {{ $email->name }} ( {{ $email->email }} )</h5>
+                                                        <h6>Phone Number : {{ $email->phone_number }}</h6>
+                                                        <small>Date : {{ $email->created_at }}</small>
+                                                        <hr>
+                                                        <p class="mt-3 mb-5">{{ $email->message }}</p>
+                                                        <hr>
+                                                        <div class="col-12 text-center">
+                                                            <a href="{{ route('contact-store',$new->id) }}"style="text-decoration:none;"><i class="bi bi-reply-fill me-1"></i>Reply</a>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @endif
                                         </div>
                                       </div>
                                 </div>

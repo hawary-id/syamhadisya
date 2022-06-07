@@ -18,7 +18,13 @@ class DashboardController extends Controller
         $skills = Skill::count();
         $contacts = Contact::count();
         $new = Contact::orderBy('id','DESC')->first();
-        $emails = Contact::where('id','<>',$new->id)->orderBy('id','DESC')->get();
+        $count = Contact::count();
+        if($count > 0){
+            $emails = Contact::where('id','<>',$new->id)->orderBy('id','DESC')->get();
+        }else{
+            $emails = 0;
+        }
+
         return view('pages.admin.dashboard',[
             'projects' => $projects,
             'posts' => $posts,
@@ -26,6 +32,7 @@ class DashboardController extends Controller
             'contacts' => $contacts,
             'new' => $new,
             'emails' => $emails,
+            'count' => $count,
         ]);
     }
 
