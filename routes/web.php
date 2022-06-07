@@ -23,7 +23,7 @@ use App\Http\Controllers\Admin\DashboardController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/projects', [HomeController::class, 'projects'])->name('projects');
-Route::post('/contact-us', [ContactController::class, 'save'])->name('contact.store');
+Route::post('/contact-us', [ContactController::class, 'save'])->name('contact-store');
 
 Route::prefix('admin')
     ->middleware('auth')

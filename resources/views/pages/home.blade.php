@@ -257,7 +257,7 @@
                             </div>
                         </div>
                     @empty
-                        <div class="text-center">Projects Not Found</div>
+                        <h4 class="text-center mb-5" data-aos="fade-up">Projects Not Found</h4>
                     @endforelse
                     <div class="col-12 text-center" data-aos="fade-up">
                         <a href="{{ route('projects') }}" class="btn btn-primary px-5 py-2">All Projects</a>
@@ -283,7 +283,7 @@
                             {{ Session::get('success') }}
                             </div>
                         @endif
-                        <form action="{{ route('contact.store') }}" method="post">
+                        <form action="{{ route('contact-store') }}" method="post">
                             {{csrf_field()}}
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name</label>

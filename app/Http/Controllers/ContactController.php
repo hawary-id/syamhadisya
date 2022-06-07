@@ -14,7 +14,7 @@ class ContactController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'subject' => 'required',
-            'phone_number' => 'required',
+            'phone_number' => 'nullable',
             'message' => 'required'
         ]);
 
@@ -27,21 +27,7 @@ class ContactController extends Controller
         $contact->message = $request->message;
 
         $contact->save();
-
-        Mail::send('layouts/admin',
-             array(
-                 'name' => $request->get('name'),
-                 'email' => $request->get('email'),
-                 'subject' => $request->get('subject'),
-                 'phone_number' => $request->get('phone_number'),
-                 'user_message' => $request->get('message'),
-             ), function($message) use ($request)
-               {
-                  $message->from($request->email);
-                  $message->to('syamhadisya@gmail.com');
-               });
-
-        return back()->with('success', 'Thank you for contact us!');
+        return redirect()->route('home','#contact')->with('success', 'Thank you for contact us!');
 
     }
 }
