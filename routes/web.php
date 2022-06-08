@@ -36,4 +36,8 @@ Route::prefix('admin')
         Route::resource('skill', SkillController::class);
     });
 
-Auth::routes();
+Auth::routes([
+    'register' => false, // Register Routes...
+    'reset' => false, // Reset Password Routes...
+    'verify' => false, // Email Verification Routes..
+]);
