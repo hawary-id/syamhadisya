@@ -28,6 +28,10 @@
         .nav-social:hover{
             color:blueviolet;
         }
+        .banner-image{
+            background-image:url('/assets/images/carousel.svg');
+            background-position: center;
+        }
     </style>
 </head>
 
@@ -135,7 +139,7 @@
                     <div class="col-md-4">
                         <small class="text-secondary">Biography</small>
                         <p>Work for money and design for love! I am Hadi, Backend and Frontend Developer based in Indonesia.</p>
-                        <small class="text-secondary">Contact<  /small>
+                        <small class="text-secondary">Contact</small>
                         <p>Tangerang, Indonesia<br>syamhadisya@gmail.com<br>+62 857-7553-9967</p>
 
                         <small class="text-secondary">Services</small>
@@ -146,7 +150,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <small class="text-secondary">Project Done</small>
-                                <h1 class=" text-primary">5</h1>
+                                <h1 class=" text-primary">{{ $count }}</h1>
                             </div>
 
                             <div class="col-6">
@@ -251,7 +255,7 @@
                                     </div>
                                     <div class="modal-footer d-flex bd-highlight">
                                         <button type="button" class="btn btn-secondary flex-fill bd-highlight" data-bs-dismiss="modal">Close</button>
-                                        <a href="http://{{ $project->url }}" target="_BLANK" type="button" class="btn btn-primary flex-fill bd-highlight">Visit</a>
+                                        <a href="https://{{ $project->url }}" target="_BLANK" type="button" class="btn btn-primary flex-fill bd-highlight">Visit</a>
                                     </div>
                                 </div>
                             </div>

@@ -11,15 +11,43 @@
 <div class="section-content section-dashboard-home" data-aos="fade-up">
     <div class="container-fluid">
         <div class="dashboard-heading">
-            <h2 class="dashboard-title">Emails</h2>
+            <h2 class="dashboard-title">Inbox</h2>
             <p class="dashboard-subtitle">List of Enail</p>
         </div>
 
         <div class="dashboard-content">
             <div class="row">
                 <div class="col-12 mb-3">
-                    <a href="{{ route('contact.index') }}" class="btn btn-primary rounded">Refresh</a>
+                    <div class="btn-group">
+                        <button class="btn btn-outline-secondary">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                All
+                            </label>
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="visually-hidden">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">None</a></li>
+                            <li><a class="dropdown-item" href="#">Read</a></li>
+                            <li><a class="dropdown-item" href="#">Unread</a></li>
+                        </ul>
+                    </div>
+                    <a class="btn btn-outline-secondary mx-2" href="{{ route('contact.index') }}">
+                        <bi class="bi bi-arrow-repeat"></bi>
+                    </a>
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        More
+                    </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#"><bi class="bi bi-pencil me-1"></bi> Mark as read</a></li>
+                        <li><a class="dropdown-item" href="#"><bi class="bi bi-trash me-1"></bi> Delete</a></li>
+                      </ul>
+
                 </div>
+
+
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
@@ -29,10 +57,9 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Name</th>
-                                            <th>Email</th>
                                             <th>Phone Number</th>
                                             <th>Subject</th>
-                                            <th>Message</th>
+                                            <th>Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -42,12 +69,11 @@
                                         @endphp
                                         @foreach ($items as $item)
                                             <tr>
-                                                <td>{{ $no }}</td>
+                                                <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
                                                 <td>{{ $item->name }}</td>
-                                                <td>{{ $item->email }}</td>
                                                 <td>{{ $item->phone_number }}</td>
                                                 <td>{{ $item->subject }}</td>
-                                                <td>{{ $item->message }}</td>
+                                                <td>{{ $item->created_at }}</td>
                                                 <td>
                                                     <div class="btn-group">
                                                         <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
