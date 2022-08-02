@@ -82,7 +82,7 @@ class SkillController extends Controller
     {
         $data = $request->all();
         $item = Skill::findOrFail($id);
-        if($request->photo){
+        if($request->image){
             $path = public_path().'/storage/'.$item->image;
             File::delete($path);
             $data['image'] = $request->file('image')->store('assets/skill','public');

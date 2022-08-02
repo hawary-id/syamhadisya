@@ -24,8 +24,8 @@
                                     <input type="text" class="form-control" id="name" name="name" placeholder="Skill Name" value="{{ $item->name }}" required>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="photo" class="form-label">Cover</label>
-                                    <input type="file" class="form-control" id="photo" name="photo">
+                                    <label for="image" class="form-label">Cover</label>
+                                    <input type="file" class="form-control" id="image" name="image">
                                     <div class="form-text">Kosongkan jika tidak ingin diganti</div>
                                 </div>
                                 <div class="form-group float-end">
